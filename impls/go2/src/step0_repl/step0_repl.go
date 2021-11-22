@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func READ(s string) string {
 	return s
@@ -19,10 +23,11 @@ func rep(str string) string {
 }
 
 func main() {
-	var s string
+	reader := bufio.NewReader(os.Stdin)
 	for {
+
 		fmt.Print("user> ")
-		fmt.Scanln(&s)
+		s, _ := reader.ReadString('\n')
 		fmt.Println(rep(s))
 	}
 }
