@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -27,7 +28,13 @@ func main() {
 	for {
 
 		fmt.Print("user> ")
-		s, _ := reader.ReadString('\n')
-		fmt.Println(rep(s))
+		s, err := reader.ReadString('\n')
+
+		if err != io.EOF {
+			fmt.Println(rep(s))
+		} else {
+			fmt.Println("Goodbye!")
+			os.Exit(0)
+		}
 	}
 }
